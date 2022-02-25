@@ -22,8 +22,7 @@
     "start": "node index.js",
     "nodemon": "nodemon index.js",
     "mocha": "mocha",
-    "nyc": "nyc mocha",
-    "coveralls": "nyc mocha && nyc report --reporter=text-lcov | coveralls"
+    "nyc": "nyc mocha"
   },
   "dependencies": {
     "consign": "0.1.6",
@@ -34,7 +33,6 @@
     "restify-mongoose": "5.0.0"
   },
   "devDependencies": {
-    "coveralls": "3.1.1",
     "proxyquire": "2.1.3",
     "nodemon": "2.0.15",
     "chai": "4.3.6",
