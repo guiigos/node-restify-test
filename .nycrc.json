@@ -10,7 +10,5 @@
   ],
   "include": [
     "src"
-  ],
-  "report-dir": "./temp",
-  "temp-directory": "./temp/.nyc_output"
+  ]
 }
