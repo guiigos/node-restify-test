@@ -1,0 +1,13 @@
+# folders
+node_modules/
+dist/
+doc/
+temp/
+.vscode/
+
+# files
+*.env
+*.log
+*.DS_Store
+npm-debug.log
+package-lock.json

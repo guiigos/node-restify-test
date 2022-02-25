@@ -1,0 +1,15 @@
+{
+  "all": true,
+  "check-coverage": true,
+  "functions": 80,
+  "lines": 80,
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "include": [
+    "src"
+  ],
+  "report-dir": "./temp",
+  "temp-directory": "./temp/.nyc_output"
+}

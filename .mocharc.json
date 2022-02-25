@@ -1,0 +1,17 @@
+{
+  "bail": true,
+  "diff": true,
+  "color": true,
+  "watch": false,
+  "recursive": true,
+  "timeout": 2000,
+  "reporter": "nyan",
+  "extension": [
+    ".spec.js"
+  ],
+  "require": "test/common/globals.js",
+  "watch-files": [
+    "src/**/*.js",
+    "test/**/*.spec.js"
+  ]
+}

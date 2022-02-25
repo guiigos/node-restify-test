@@ -1,0 +1,47 @@
+{
+  "name": "node-restify-test",
+  "version": "1.0.0",
+  "description": "Project for testing pratice using restify with mongoose",
+  "keywords": [
+    "mongoose",
+    "restify",
+    "mocha",
+    "chai",
+    "sinon",
+    "faker",
+    "proxyquire",
+    "nyc"
+  ],
+  "author": {
+    "name": "Guilherme Alves",
+    "email": "guiigos.alves@gmail.com",
+    "url": "http://www.guiigos.alves"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "nodemon": "nodemon index.js",
+    "mocha": "mocha",
+    "nyc": "nyc mocha"
+  },
+  "dependencies": {
+    "consign": "0.1.6",
+    "dotenv": "16.0.0",
+    "mongoose": "6.2.3",
+    "morgan": "1.10.0",
+    "restify": "8.6.1",
+    "restify-mongoose": "5.0.0"
+  },
+  "devDependencies": {
+    "proxyquire": "2.1.3",
+    "nodemon": "2.0.15",
+    "chai": "4.3.6",
+    "chai-http": "4.3.0",
+    "chai-things": "0.2.0",
+    "mocha": "9.2.1",
+    "nyc": "15.1.0",
+    "sinon": "13.0.1",
+    "faker": "5.5.3"
+  },
+  "license": "MIT"
+}
