@@ -15,8 +15,6 @@ Project designed to practice unit and integration tests with **NodeJs** performi
 </details>
 <br>
 
-![coverage](./assets/coverage.gif)
-
 ## Usage
 ### Dependencies
 Install dependencies and modules.
