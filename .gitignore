@@ -1,8 +1,7 @@
 # folders
 node_modules/
 dist/
-doc/
-temp/
+coverage/
 .vscode/
 
 # files
