@@ -5,6 +5,7 @@
   "lines": 80,
   "reporter": [
     "text",
+    "lcov",
     "html"
   ],
   "include": [
