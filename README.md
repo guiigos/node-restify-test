@@ -13,6 +13,9 @@ Project designed to practice unit and integration tests with **NodeJs** performi
 > - [_**License**_](#license)
   
 </details>
+<br>
+
+![coverage](./assets/coverage.gif)
 
 ## Usage
 ### Dependencies
