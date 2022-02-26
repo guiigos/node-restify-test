@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire');
 
 const cors = sinon.spy();
 
-describe('Config :: Database :: Cors', function () {
+describe('Config :: Middlewares :: Cors', function () {
   it('should be config cors', function () {
     const serverSpies = {
       use: sinon.spy(),
