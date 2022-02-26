@@ -25,7 +25,7 @@ describe('Config', function () {
     sinon.assert.calledOnce(mongoose.connect);
 
     sinon.assert.callCount(serverSpies.on, 2);
-    sinon.assert.callCount(serverSpies.use, 3);
+    sinon.assert.callCount(serverSpies.use, 4);
     sinon.assert.callCount(serverSpies.get, 2);
     sinon.assert.callCount(serverSpies.post, 1);
     sinon.assert.callCount(serverSpies.patch, 1);

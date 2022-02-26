@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "consign": "0.1.6",
+    "cors": "~2.8.5",
     "dotenv": "16.0.0",
     "mongoose": "6.2.3",
     "morgan": "1.10.0",
@@ -33,15 +34,15 @@
     "restify-mongoose": "5.0.0"
   },
   "devDependencies": {
-    "proxyquire": "2.1.3",
-    "nodemon": "2.0.15",
     "chai": "4.3.6",
     "chai-http": "4.3.0",
     "chai-things": "0.2.0",
+    "faker": "5.5.3",
     "mocha": "9.2.1",
+    "nodemon": "2.0.15",
     "nyc": "15.1.0",
-    "sinon": "13.0.1",
-    "faker": "5.5.3"
+    "proxyquire": "2.1.3",
+    "sinon": "13.0.1"
   },
   "license": "MIT"
 }
