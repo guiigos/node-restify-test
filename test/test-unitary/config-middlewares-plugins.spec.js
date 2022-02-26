@@ -2,7 +2,7 @@ const sinon = require('sinon');
 const restify = require('restify');
 const config = require('../../src/config/middlewares/plugins');
 
-describe('Config :: Database :: Plugins', function () {
+describe('Config :: Middlewares :: Plugins', function () {
   beforeEach(function () {
     sinon.stub(restify.plugins, 'queryParser');
     sinon.stub(restify.plugins, 'bodyParser');
