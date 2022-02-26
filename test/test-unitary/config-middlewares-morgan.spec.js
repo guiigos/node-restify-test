@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire');
 
 const morgan = sinon.spy();
 
-describe('Config :: Database :: Mongoose', function () {
+describe('Config :: Middlewares :: Morgan', function () {
   it('should be config morgan', function () {
     const serverSpies = {
       use: sinon.spy(),
