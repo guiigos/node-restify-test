@@ -1,9 +1,9 @@
 const restify = require('restify');
-const config = require('./config');
+const loader = require('./loader');
 
 module.exports = function () {
   const server = restify.createServer();
-  config.call(server);
+  loader.call(server);
 
   return server;
 };

@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+module.exports = async function () {
+  const mongod = await MongoMemoryServer.create();
+
+  mongoose.Promise = global.Promise;
+  mongoose.connect(mongod.getUri());
+
+  mongoose.connection.on('disconnected', async function () {
+    await mongod.stop();
+  });
+};
