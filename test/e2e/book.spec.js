@@ -7,6 +7,10 @@ const mock = require('../mocks/connection');
 
 const { expect, request } = global;
 
+const book = {
+  title: random.word(),
+};
+
 const loader = proxyquire('../../src/loader', {
   './database/connection': mock
 });
@@ -15,16 +19,14 @@ const server = proxyquire('../../src/server', {
   './loader': loader
 });
 
-const book = {
-  title: random.word(),
-};
-
 let requester;
 
-describe.only('Book', function () {
-  before(function () {
+describe('Book', function () {
+  before(function (done) {
     sinon.stub(dotenv, 'config');
     requester = request(server()).keepOpen();
+
+    mongoose.connection.on('connected', done);
   });
 
   beforeEach(async function () {
@@ -80,8 +82,10 @@ describe.only('Book', function () {
     await mongoose.models.Book.deleteMany({});
   });
 
-  after(function () {
-    requester.close();
+  after(async function () {
+    await mongoose.connection.close();
+    await requester.close();
+
     dotenv.config.restore();
   });
 });

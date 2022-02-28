@@ -9,11 +9,11 @@ describe('Loader', function () {
 
   it('should be configure service with consign', function () {
     const consign = require('../mocks/consign')();
-    const config = proxyquire('../../src/config', {
+    const loader = proxyquire('../../src/loader', {
       consign,
     });
 
-    config();
+    loader();
 
     sinon.assert.calledOnce(dotenv.config);
 

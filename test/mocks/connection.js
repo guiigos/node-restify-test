@@ -6,8 +6,13 @@ module.exports = async function () {
 
   mongoose.Promise = global.Promise;
   mongoose.connect(mongod.getUri());
+  mongoose.connection.setMaxListeners(1);
 
   mongoose.connection.on('disconnected', async function () {
     await mongod.stop();
+  });
+
+  mongoose.connection.on('close', function () {
+    mongoose.connection.removeAllListeners();
   });
 };
