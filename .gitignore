@@ -27,6 +27,10 @@ package-lock.json
 lib
 node_modules
 
+# coverage
+coverage
+.nyc_output
+
 # macos
 ._*
 .DS_Store
