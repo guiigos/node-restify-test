@@ -1,13 +1,39 @@
-# folders
-node_modules/
-dist/
-coverage/
-.nyc_output/
-.vscode/
+# temp
+*.tmp
+*.tmp.*
 
-# files
-*.env
+# log
 *.log
-*.DS_Store
-npm-debug.log
+*.log.*
+
+# dotenv
+.env
+
+# editor
+.vscode
+
+# build
+dist
+doc
+
+# test
+coverage
+.nyc_output
+
+# yarn
+yarn-debug.log*
+yarn-error.log*
+
+# npm
+npm-debug.log*
 package-lock.json
+
+# modules
+node_modules
+
+# macos
+._*
+.DS_Store
+.DS_Store?
+.Trashes
+Thumbs.db
