@@ -22,11 +22,11 @@ const server = proxyquire("../../src/server", {
 let requester;
 
 describe("Book", function () {
-  before(async function () {
-    this.timeout(30000);
+  before(function (done) {
     sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
-    await mock.ready();
+
+    mongoose.connection.on("connected", done);
   });
 
   beforeEach(async function () {
@@ -75,7 +75,7 @@ describe("Book", function () {
     const { status, body } = await requester.delete(`/book/${_id}`);
 
     expect(status).to.equal(200);
-    expect(body).to.own.include(mock);
+    expect(body).to.own.include(book);
   });
 
   afterEach(async function () {
