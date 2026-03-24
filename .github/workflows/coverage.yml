@@ -16,6 +16,12 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
 
+      - name: Cache MongoMemoryServer binaries
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: mongodb-binaries-${{ runner.os }}
+
       - name: Use NodeJs
         uses: actions/setup-node@v1
         with:
@@ -23,6 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Pre-download MongoDB binary
+        run: node -e "const { MongoMemoryServer } = require('mongodb-memory-server'); MongoMemoryServer.create().then(async (s) => { await s.stop(); process.exit(0); })"
 
       - name: Run coverage
         run: npm run nyc
