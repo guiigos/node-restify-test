@@ -26,7 +26,7 @@ describe("Book", function () {
     this.timeout(30000);
     sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
-    await mongoose.connection.asPromise();
+    await mock.ready();
   });
 
   beforeEach(async function () {

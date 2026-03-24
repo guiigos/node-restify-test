@@ -1,18 +1,27 @@
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
-module.exports = async function () {
-  const mongod = await MongoMemoryServer.create();
+let _ready;
 
-  mongoose.Promise = global.Promise;
-  mongoose.connect(mongod.getUri());
-  mongoose.connection.setMaxListeners(1);
+const connection = async function () {
+  _ready = (async () => {
+    const mongod = await MongoMemoryServer.create();
 
-  mongoose.connection.on("disconnected", async function () {
-    await mongod.stop();
-  });
+    mongoose.Promise = global.Promise;
+    await mongoose.connect(mongod.getUri());
 
-  mongoose.connection.on("close", function () {
-    mongoose.connection.removeAllListeners();
-  });
+    mongoose.connection.on("disconnected", async function () {
+      await mongod.stop();
+    });
+
+    mongoose.connection.on("close", function () {
+      mongoose.connection.removeAllListeners();
+    });
+  })();
+
+  await _ready;
 };
+
+connection.ready = () => _ready;
+
+module.exports = connection;
