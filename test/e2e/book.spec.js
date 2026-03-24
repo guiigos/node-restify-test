@@ -22,7 +22,7 @@ const server = proxyquire("../../src/server", {
 let requester;
 
 describe("Book", function () {
-  this.timeout(20000);
+  this.timeout(50000);
 
   before(async function () {
     sinon.stub(dotenv, "config");

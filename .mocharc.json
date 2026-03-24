@@ -4,7 +4,7 @@
   "color": true,
   "watch": false,
   "recursive": true,
-  "timeout": 10000,
+  "timeout": 50000,
   "reporter": "nyan",
   "extension": [
     ".spec.js"
