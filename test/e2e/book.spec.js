@@ -22,18 +22,37 @@ const server = proxyquire("../../src/server", {
 let requester;
 
 describe("Book", function () {
-  this.timeout(50000);
-
   before(async function () {
+    this.timeout(60000);
+
     sinon.stub(dotenv, "config");
+
+    console.log("[test] iniciando server");
     requester = request(server()).keepOpen();
 
-    if (mongoose.connection.readyState !== 1) {
-      await new Promise((resolve, reject) => {
-        mongoose.connection.once("connected", resolve);
-        mongoose.connection.once("error", reject);
-      });
+    const conn = mongoose.connection;
+    console.log("[test] readyState inicial:", conn.readyState);
+
+    if (conn.readyState === 1) {
+      console.log("[test] mongo já conectado");
+      return;
     }
+
+    await new Promise((resolve, reject) => {
+      conn.once("connected", () => {
+        console.log("[test] evento connected recebido");
+        resolve();
+      });
+
+      conn.once("error", (err) => {
+        console.error("[test] evento error recebido:", err);
+        reject(err);
+      });
+
+      setTimeout(() => {
+        reject(new Error(`[test] conexão não abriu. readyState=${conn.readyState}`));
+      }, 15000);
+    });
   });
 
   beforeEach(async function () {
