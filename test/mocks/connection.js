@@ -4,19 +4,16 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 let _ready;
 
 const connection = async function () {
+  console.log("[mock] connection() foi chamada");
+
   _ready = (async () => {
+    console.log("[mock] criando MongoMemoryServer");
     const mongod = await MongoMemoryServer.create();
 
+    console.log("[mock] conectando mongoose");
     mongoose.Promise = global.Promise;
     await mongoose.connect(mongod.getUri());
-
-    mongoose.connection.on("disconnected", async function () {
-      await mongod.stop();
-    });
-
-    mongoose.connection.on("close", function () {
-      mongoose.connection.removeAllListeners();
-    });
+    console.log("[mock] mongoose conectado");
   })();
 
   await _ready;
