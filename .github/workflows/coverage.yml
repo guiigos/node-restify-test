@@ -9,21 +9,12 @@ on:
 jobs:
   workflow:
     name: Build
-    runs-on: ubuntu-20.04
-
-    env:
-      MONGOMS_VERSION: 4.4.18
+    runs-on: ubuntu-latest
 
     steps:
 
       - name: Clone repository
         uses: actions/checkout@v2
-
-      - name: Cache MongoMemoryServer binaries
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/mongodb-binaries
-          key: mongodb-binaries-${{ runner.os }}-4.4.18
 
       - name: Use NodeJs
         uses: actions/setup-node@v1
@@ -32,9 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Pre-download MongoDB binary
-        run: node -e "const { MongoMemoryServer } = require('mongodb-memory-server'); MongoMemoryServer.create().then(async (s) => { await s.stop(); process.exit(0); })"
 
       - name: Run coverage
         run: npm run nyc
