@@ -32,8 +32,6 @@ jobs:
           sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
       - name: Run coverage
-        env:
-          MONGOMS_DEBUG: 1
         run: npm run nyc
 
       - name: Coveralls
