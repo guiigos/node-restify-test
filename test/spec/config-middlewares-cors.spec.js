@@ -1,13 +1,13 @@
-const sinon = require('sinon');
-const proxyquire = require('proxyquire');
+const sinon = require("sinon");
+const proxyquire = require("proxyquire");
 
 const cors = sinon.spy();
 
-describe('Config :: Middlewares :: Cors', function () {
-  it('should be config cors', function () {
+describe("Config :: Middlewares :: Cors", function () {
+  it("should be config cors", function () {
     const use = sinon.spy();
 
-    const config = proxyquire('../../src/config/middlewares/cors', {
+    const config = proxyquire("../../src/config/middlewares/cors", {
       cors,
     });
 

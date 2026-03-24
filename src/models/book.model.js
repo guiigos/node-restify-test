@@ -1,4 +1,4 @@
-const { Schema, models, model } = require('mongoose');
+const { Schema, models, model } = require("mongoose");
 
 const bookSchema = new Schema({
   title: {
@@ -11,4 +11,4 @@ const bookSchema = new Schema({
   authors: [String],
 });
 
-module.exports = Book = models.Book || model('Book', bookSchema);
+module.exports = Book = models.Book || model("Book", bookSchema);

@@ -1,5 +1,5 @@
-const restify = require('restify');
-const loader = require('./loader');
+const restify = require("restify");
+const loader = require("./loader");
 
 module.exports = function () {
   const server = restify.createServer();

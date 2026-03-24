@@ -1,9 +1,9 @@
-const sinon = require('sinon');
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const { random } = require('faker');
-const proxyquire = require('proxyquire');
-const mock = require('../mocks/connection');
+const sinon = require("sinon");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const { random } = require("faker");
+const proxyquire = require("proxyquire");
+const mock = require("../mocks/connection");
 
 const { expect, request } = global;
 
@@ -11,29 +11,29 @@ const book = {
   title: random.word(),
 };
 
-const loader = proxyquire('../../src/loader', {
-  './database/connection': mock
+const loader = proxyquire("../../src/loader", {
+  "./database/connection": mock
 });
 
-const server = proxyquire('../../src/server', {
-  './loader': loader
+const server = proxyquire("../../src/server", {
+  "./loader": loader
 });
 
 let requester;
 
-describe('Book', function () {
+describe("Book", function () {
   before(function (done) {
-    sinon.stub(dotenv, 'config');
+    sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
 
-    mongoose.connection.on('connected', done);
+    mongoose.connection.on("connected", done);
   });
 
   beforeEach(async function () {
     await new mongoose.models.Book(book).save();
   });
 
-  it('get', async function () {
+  it("get", async function () {
     const { status, body } = await requester.get(`/book`);
 
     expect(status).to.equal(200);
@@ -43,7 +43,7 @@ describe('Book', function () {
     });
   });
 
-  it('get/:id', async function () {
+  it("get/:id", async function () {
     const { _id } = await mongoose.models.Book.findOne(book);
     const { status, body } = await requester.get(`/book/${_id}`);
 
@@ -51,14 +51,14 @@ describe('Book', function () {
     expect(body).to.own.include(book);
   });
 
-  it('post', async function () {
+  it("post", async function () {
     const { status, body } = await requester.post(`/book`).send(book);
 
     expect(status).to.equal(201);
     expect(body).to.own.include(book);
   });
 
-  it('patch/:id', async function () {
+  it("patch/:id", async function () {
     const mock = {
       title: random.word(),
     };
@@ -70,7 +70,7 @@ describe('Book', function () {
     expect(body).to.own.include(mock);
   });
 
-  it('delete/:id', async function () {
+  it("delete/:id", async function () {
     const { _id } = await mongoose.models.Book.findOne(book);
     const { status, body } = await requester.delete(`/book/${_id}`);
 

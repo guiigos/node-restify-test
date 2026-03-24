@@ -1,8 +1,8 @@
-const sinon = require('sinon');
-const event = require('../../src/config/events/404');
+const sinon = require("sinon");
+const event = require("../../src/config/events/404");
 
-describe('Config :: Events :: NotFound', function () {
-  it('should be implements not found callback', function () {
+describe("Config :: Events :: NotFound", function () {
+  it("should be implements not found callback", function () {
     const callback = sinon.spy();
     const on = sinon.spy();
 
@@ -12,6 +12,6 @@ describe('Config :: Events :: NotFound', function () {
 
     sinon.assert.calledOnce(callback);
     sinon.assert.calledOnce(on);
-    sinon.assert.calledWith(on, 'NotFound');
+    sinon.assert.calledWith(on, "NotFound");
   });
 });

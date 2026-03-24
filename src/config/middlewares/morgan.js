@@ -1,5 +1,5 @@
-const morgan = require('morgan');
+const morgan = require("morgan");
 
 module.exports = function (server) {
-  server.use(morgan.call(morgan, 'dev'));
+  server.use(morgan.call(morgan, "dev"));
 };

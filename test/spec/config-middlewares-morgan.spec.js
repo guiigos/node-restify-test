@@ -1,13 +1,13 @@
-const sinon = require('sinon');
-const proxyquire = require('proxyquire');
+const sinon = require("sinon");
+const proxyquire = require("proxyquire");
 
 const morgan = sinon.spy();
 
-describe('Config :: Middlewares :: Morgan', function () {
-  it('should be config morgan', function () {
+describe("Config :: Middlewares :: Morgan", function () {
+  it("should be config morgan", function () {
     const use = sinon.spy();
 
-    const config = proxyquire('../../src/config/middlewares/morgan', {
+    const config = proxyquire("../../src/config/middlewares/morgan", {
       morgan,
     });
 
@@ -15,6 +15,6 @@ describe('Config :: Middlewares :: Morgan', function () {
 
     sinon.assert.calledOnce(use);
     sinon.assert.calledOnce(morgan);
-    sinon.assert.calledWith(morgan, 'dev');
+    sinon.assert.calledWith(morgan, "dev");
   });
 });

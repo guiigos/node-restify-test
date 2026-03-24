@@ -1,8 +1,8 @@
-const sinon = require('sinon');
-const event = require('../../src/config/events/500');
+const sinon = require("sinon");
+const event = require("../../src/config/events/500");
 
-describe('Config :: Events :: InternalServer', function () {
-  it('should be implements internal server callback', function () {
+describe("Config :: Events :: InternalServer", function () {
+  it("should be implements internal server callback", function () {
     const callback = sinon.spy();
     const on = sinon.spy();
 
@@ -12,6 +12,6 @@ describe('Config :: Events :: InternalServer', function () {
 
     sinon.assert.calledOnce(callback);
     sinon.assert.calledOnce(on);
-    sinon.assert.calledWith(on, 'InternalServer');
+    sinon.assert.calledWith(on, "InternalServer");
   });
 });

@@ -1,6 +1,6 @@
-const sinon = require('sinon');
-const restifyMongoose = require('restify-mongoose');
-const BookRoute = require('../../src/routes/book.route');
+const sinon = require("sinon");
+const restifyMongoose = require("restify-mongoose");
+const BookRoute = require("../../src/routes/book.route");
 
 const query = sinon.spy();
 const detail = sinon.spy();
@@ -8,9 +8,9 @@ const insert = sinon.spy();
 const update = sinon.spy();
 const remove = sinon.spy();
 
-describe('Routes :: Book', function () {
+describe("Routes :: Book", function () {
   beforeEach(function () {
-    sinon.stub(restifyMongoose, 'call').returns({
+    sinon.stub(restifyMongoose, "call").returns({
       query,
       detail,
       insert,
@@ -19,7 +19,7 @@ describe('Routes :: Book', function () {
     });
   });
 
-  it('should be instance expected', function () {
+  it("should be instance expected", function () {
     const get = sinon.spy();
     const post = sinon.spy();
     const patch = sinon.spy();
@@ -37,11 +37,11 @@ describe('Routes :: Book', function () {
     sinon.assert.calledOnce(patch);
     sinon.assert.calledOnce(del);
 
-    sinon.assert.calledWith(get, '/book');
-    sinon.assert.calledWith(get, '/book/:id');
-    sinon.assert.calledWith(post, '/book');
-    sinon.assert.calledWith(patch, '/book/:id');
-    sinon.assert.calledWith(del, '/book/:id');
+    sinon.assert.calledWith(get, "/book");
+    sinon.assert.calledWith(get, "/book/:id");
+    sinon.assert.calledWith(post, "/book");
+    sinon.assert.calledWith(patch, "/book/:id");
+    sinon.assert.calledWith(del, "/book/:id");
 
     sinon.assert.callOrder(get, get, post, patch, del);
 

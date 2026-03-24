@@ -1,13 +1,13 @@
-const sinon = require('sinon');
-const mongoose = require('mongoose');
-const db = require('../../src/database/connection');
+const sinon = require("sinon");
+const mongoose = require("mongoose");
+const db = require("../../src/database/connection");
 
-describe('Database :: Connection', function () {
+describe("Database :: Connection", function () {
   beforeEach(function () {
-    sinon.stub(mongoose, 'connect');
+    sinon.stub(mongoose, "connect");
   });
 
-  it('should be open connection', function () {
+  it("should be open connection", function () {
     db();
 
     sinon.assert.calledOnce(mongoose.connect);

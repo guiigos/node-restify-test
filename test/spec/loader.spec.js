@@ -1,15 +1,15 @@
-const sinon = require('sinon');
-const dotenv = require('dotenv');
-const proxyquire = require('proxyquire');
+const sinon = require("sinon");
+const dotenv = require("dotenv");
+const proxyquire = require("proxyquire");
 
-describe('Loader', function () {
+describe("Loader", function () {
   beforeEach(function () {
-    sinon.stub(dotenv, 'config');
+    sinon.stub(dotenv, "config");
   });
 
-  it('should be configure service with consign', function () {
-    const consign = require('../mocks/consign')();
-    const loader = proxyquire('../../src/loader', {
+  it("should be configure service with consign", function () {
+    const consign = require("../mocks/consign")();
+    const loader = proxyquire("../../src/loader", {
       consign,
     });
 
@@ -19,7 +19,7 @@ describe('Loader', function () {
 
     sinon.assert.calledOnce(consign);
     sinon.assert.calledWith(consign, {
-      cwd: 'src',
+      cwd: "src",
       verbose: false,
     });
 
@@ -30,10 +30,10 @@ describe('Loader', function () {
     } = consign.getCall(0).returnValue;
 
     sinon.assert.calledOnce(include);
-    sinon.assert.calledWith(include, 'config');
+    sinon.assert.calledWith(include, "config");
 
     sinon.assert.calledOnce(then);
-    sinon.assert.calledWith(then, 'routes');
+    sinon.assert.calledWith(then, "routes");
 
     sinon.assert.calledOnce(into);
   });
