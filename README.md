@@ -5,19 +5,6 @@ Project designed to practice unit and integration tests with **NodeJs** performi
 ![NYC Config](https://img.shields.io/nycrc/guiigos/node-restify-test?config=.nycrc.json)
 [![Coverage Status](https://coveralls.io/repos/github/guiigos/node-restify-test/badge.svg)](https://coveralls.io/github/guiigos/node-restify-test)
 
-<details>
-  <summary>
-    <strong>:pushpin: Menu</strong>
-  </summary>
-  <br>
-  
-> - [_**Usage**_](#usage)
->   - [_Dependencies_](#dependencies)
->   - [_Scripts_](#scripts)
-> - [_**License**_](#license)
-  
-</details>
-
 ## Usage
 ### Dependencies
 
