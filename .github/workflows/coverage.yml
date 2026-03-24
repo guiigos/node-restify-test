@@ -25,6 +25,8 @@ jobs:
         run: npm install
 
       - name: Run coverage
+        env:
+          MONGOMS_DEBUG: 1
         run: npm run nyc
 
       - name: Coveralls
