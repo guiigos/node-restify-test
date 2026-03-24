@@ -26,7 +26,11 @@ describe("Book", function () {
     sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
 
-    mongoose.connection.on("connected", done);
+    if (mongoose.connection.readyState === 1) {
+      done();
+    } else {
+      mongoose.connection.on("connected", done);
+    }
   });
 
   beforeEach(async function () {
