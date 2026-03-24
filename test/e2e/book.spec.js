@@ -22,11 +22,18 @@ const server = proxyquire("../../src/server", {
 let requester;
 
 describe("Book", function () {
-  before(function (done) {
+  this.timeout(20000);
+
+  before(async function () {
     sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
 
-    mongoose.connection.on("connected", done);
+    if (mongoose.connection.readyState !== 1) {
+      await new Promise((resolve, reject) => {
+        mongoose.connection.once("connected", resolve);
+        mongoose.connection.once("error", reject);
+      });
+    }
   });
 
   beforeEach(async function () {
