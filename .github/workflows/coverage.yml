@@ -9,7 +9,7 @@ on:
 jobs:
   workflow:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     env:
       MONGOMS_VERSION: 4.4.18
