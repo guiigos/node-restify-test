@@ -10,7 +10,7 @@ jobs:
   workflow:
     name: Build
     runs-on: ubuntu-latest
-  
+
     steps:
 
       - name: Clone repository
@@ -21,27 +21,13 @@ jobs:
         with:
           node-version: 14
 
-      - name: Cache MongoDB binary
-        uses: actions/cache@v3
-        with:
-          path: /tmp/mongodb-binaries
-          key: ${{ runner.os }}-mongodb-memory-server
-
       - name: Install dependencies
         run: npm install
 
-      - name: Download MongoDB binary
-        run: node -e "const {MongoMemoryServer} = require('mongodb-memory-server'); MongoMemoryServer.create().then(s => s.stop())"
-        env:
-          MONGOMS_DOWNLOAD_DIR: /tmp/mongodb-binaries
-
       - name: Run coverage
         run: npm run nyc
-        env:
-          MONGOMS_DOWNLOAD_DIR: /tmp/mongodb-binaries
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          
