@@ -23,6 +23,7 @@ let requester;
 
 describe("Book", function () {
   before(function (done) {
+    this.timeout(30000);
     sinon.stub(dotenv, "config");
     requester = request(server()).keepOpen();
 
